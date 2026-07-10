@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>{{ blog_name }}</title>
+
+</head>
+
+<body>
+
+	<h1>{{ blog_name }}</h1>
+	<p>created by {{owner}} </p>
+
+	<hr>
+
+	<h2>latest blog posts</h2>
+	{% if total_posts > 0 %}
+	 {% for post in posts %}
+	
+		<h3>{{post}}</h3>
+	
+	{% endfor %}
+
+	{% else %}
+
+	<p>No blog posts available.</p>
+
+{% endif %}
+
+</body>
+
+</html>
