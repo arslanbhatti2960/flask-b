@@ -1,12 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
+from forms import ContactForm
 
 app = Flask(__name__)
-
+app.config["SECRET_KEY"] = "my-secret-key"
 
 @app.route("/")
 def home_page():
     blog_name = "Flask Blog"
-    owner = "Bilal Asghar"
+    owner = "Arslan Zafar"
     total_posts = 3
 
     posts = [
@@ -29,18 +31,28 @@ def about_page():
     return render_template("about.html")
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact_page():
-    return render_template("contact.html")
 
+    form = ContactForm()
 
-@app.errorhandler(404)
-def page_not_found(error):
+    if form.validate_on_submit():
+
+        print(form.name.data)
+
+        print(form.email.data)
+
+        print(form.message.data)
+
     return render_template(
-        "404.html",
-        blog_name="Flask Blog"
-    ), 404
 
+        "contact.html",
+
+        blog_name="Flask Blog",
+
+        form = form
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
+    

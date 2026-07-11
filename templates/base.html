@@ -9,16 +9,21 @@
      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container mt-5"></div>
+    <div class="container mt-5">
+
     <h1 class="display-4">{{blog_name}}</h1>
+
     <p class="lead"creat by {{owner}}></p>
+
     <a href="{{url_for('about_page')}}" class="btn btn-danger">About Us</a>
+
     <a href="{{url_for('contact_page')}}" class="btn btn-danger">contact Us</a>
     <hr>
     
-    {%block contact%}
+    
+        {% block content %}
 
-    {%endblock%}
-
+        {%endblock%}
+</div>
 </body>
 </html>
