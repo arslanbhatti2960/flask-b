@@ -2,8 +2,10 @@
 
 {% block content %}
 <body>
-    
+    <img src="{{ url_for('static', filename='imeges/scn.jpeg')}}" class="rounded-circle mb-3 img-fluid profile-img" alt="Arslan2.jpg">
     <h1>I Am Web Developer</h1>
+    <h2>My name is Arslan Zafar</h2>
 
+    <a href="{{url_for('register_page')}}" class="btn btn-danger">whatsapp</a> 
 </body>
 {% endblock %}
